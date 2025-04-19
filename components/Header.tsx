@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CTAButton } from "@/components/CTAButton";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -30,7 +32,13 @@ export function Header() {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <FileText className="h-8 w-8 text-green-500" />
+          <Image
+            src="/images/logo.png"
+            alt="TaxTally logo"
+            width={32}
+            height={32}
+            className="h-8 w-8 object-contain"
+          />
           <span className="text-xl font-bold text-gray-900 dark:text-white">
             TaxTally
           </span>
@@ -43,6 +51,12 @@ export function Header() {
             className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
           >
             Home
+          </Link>
+          <Link
+            href="#features"
+            className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+          >
+            Features
           </Link>
           <Link
             href="/pricing"
@@ -62,15 +76,12 @@ export function Header() {
           >
             Contact
           </Link>
-          <Button variant="default" className="bg-green-600 hover:bg-green-700">
-            <Link
-              href="https://t.me/TaxTallyBot"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Try on Telegram
-            </Link>
-          </Button>
+          <CTAButton
+            text="Try on Telegram"
+            href="https://t.me/TaxTallyBot"
+            external
+            className="px-5 py-2.5 text-base"
+          />
         </nav>
 
         {/* Mobile Menu Button */}

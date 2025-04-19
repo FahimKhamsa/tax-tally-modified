@@ -1,21 +1,45 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight, MessageCircle, CheckCircle } from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
+import { Telegram, WhatsApp } from "@/components/icons/SvgIcons";
 
 export function HeroSection() {
   return (
     <section
-      className="relative overflow-hidden pt-24 pb-20 md:pt-28 md:pb-24 bg-gradient-to-br from-green-50 to-white dark:from-gray-900 dark:to-gray-800"
-      style={{
-        backgroundImage: "url('/images/bg-image.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative min-h-[675px] scroll-pt-24 pb-20 md:pt-28 md:pb-24 
+               bg-gradient-to-br from-green-50 to-white 
+               dark:from-gray-900 dark:to-gray-800 overflow-hidden"
     >
+      {/* Background image layer */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/home-bg-image.png"
+          alt="Background"
+          width={window.screen.width}
+          height={window.screen.height}
+          className="absolute top-0 left-0 object-cover transform -translate-y-[350px]"
+          priority
+        />
+      </div>
+
       {/* Overlay to darken/lighten over background image */}
-      <div className="absolute inset-0 bg-white/20 dark:bg-gray-900/60"></div>
+      <div className="absolute inset-0 bg-white/25 dark:bg-gray-900/60"></div>
+
+      <div
+        className="
+          absolute inset-x-0 bottom-0
+          h-36 pointer-events-none
+          bg-gradient-to-b
+          from-transparent
+            via-white/80
+            to-white
+          dark:via-gray-900/80
+          dark:to-gray-900
+        "
+      />
 
       <div className="relative container mx-auto px-4">
         <div className="max-w-xl mx-auto text-center lg:text-left">
@@ -50,15 +74,22 @@ export function HeroSection() {
               text="Try on Telegram"
               href="https://t.me/TaxTallyBot"
               external
-              icon={<MessageCircle className="h-5 w-5" />}
-              className="px-6 py-3 text-base rounded-full"
+              icon={<Telegram className="h-5 w-5" />}
+              className="px-5 py-3 text-base rounded-full"
+            />
+            <CTAButton
+              text="Try on WhatsApp"
+              href="/coming-soon"
+              external={false}
+              icon={<WhatsApp className="h-6 w-6" />}
+              className="px-5 py-3 text-base rounded-full"
             />
             <CTAButton
               text="Learn More"
               href="#features"
               variant="outline"
               icon={<ArrowRight className="h-5 w-5" />}
-              className="px-6 py-3 text-base rounded-full"
+              className="px-5 py-3 text-base rounded-full"
             />
           </motion.div>
 
@@ -69,26 +100,26 @@ export function HeroSection() {
             className="flex justify-center lg:justify-start items-center space-x-6"
           >
             <div className="flex items-center space-x-2">
-              <CheckCircle className="h-5 w-5 text-green-600" />
-              <span className="text-gray-700 dark:text-gray-300">Secure</span>
+              <CheckCircle className="h-5 w-5 text-green-700" />
+              <span className="text-gray-700 font-bold dark:text-gray-300">
+                Secure
+              </span>
             </div>
             <div className="flex items-center space-x-2">
-              <CheckCircle className="h-5 w-5 text-green-600" />
-              <span className="text-gray-700 dark:text-gray-300">Fast</span>
+              <CheckCircle className="h-5 w-5 text-green-700" />
+              <span className="text-gray-700 font-bold dark:text-gray-300">
+                Fast
+              </span>
             </div>
             <div className="flex items-center space-x-2">
-              <CheckCircle className="h-5 w-5 text-green-600" />
-              <span className="text-gray-700 dark:text-gray-300">
+              <CheckCircle className="h-5 w-5 text-green-700" />
+              <span className="text-gray-700 font-bold dark:text-gray-300">
                 Affordable
               </span>
             </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-green-200 dark:bg-green-900/20 rounded-full opacity-50 blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-60 h-60 bg-blue-100 dark:bg-blue-900/20 rounded-full opacity-30 blur-3xl"></div>
     </section>
   );
 }

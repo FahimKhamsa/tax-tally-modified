@@ -59,6 +59,22 @@ export async function validateStripeEvent(
       throw new Error("Invalid Stripe signature");
     }
 
+    // DEVELOPMENT ONLY: Parse the payload directly without verification
+    if (process.env.NODE_ENV === "development") {
+      console.log(
+        "⚠️ BYPASSING SIGNATURE VERIFICATION - FOR DEVELOPMENT ONLY ⚠️"
+      );
+      try {
+        const event = JSON.parse(
+          typeof payload === "string" ? payload : payload.toString()
+        );
+        return { success: true, event };
+      } catch (e) {
+        console.error("Failed to parse JSON payload:", e);
+        return { success: false, error: new Error("Invalid JSON payload") };
+      }
+    }
+
     const event = stripe.webhooks.constructEvent(
       payload,
       signature,

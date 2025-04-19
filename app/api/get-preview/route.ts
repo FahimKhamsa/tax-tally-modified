@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
-  console.log("Preview ID:", id);
 
   if (!id) {
     return NextResponse.json({ error: "Missing preview ID" }, { status: 400 });
@@ -12,7 +11,6 @@ export async function GET(req: NextRequest) {
 
   try {
     const previewDoc = await db.collection("previews").doc(id).get();
-    console.log("Preview Document:", previewDoc.data());
 
     if (!previewDoc.exists) {
       return NextResponse.json({ error: "Preview not found" }, { status: 404 });

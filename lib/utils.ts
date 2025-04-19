@@ -36,7 +36,6 @@ export function formatDate(dateInput: string | Date | null): string {
   };
 
   const parsedDate = new Intl.DateTimeFormat("en-US", options).format(date);
-  console.log("Parsed Date:", parsedDate);
   return parsedDate;
 }
 

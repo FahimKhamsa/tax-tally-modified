@@ -4,10 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
-  return new Response("🟢 create-preview is live!", { status: 200 });
-}
-
 export async function POST(req: NextRequest) {
   const headers = new Headers();
   headers.set("Access-Control-Allow-Origin", "*");

@@ -24,7 +24,6 @@ export default function PreviewPage() {
         setLoading(true);
         const response = await fetch(`/api/get-preview?id=${id}`);
         const data = await response.json();
-        console.log("Preview Data from preview page:", data);
 
         if (!response.ok) {
           throw new Error(data.message || "Failed to fetch preview");

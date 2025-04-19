@@ -159,7 +159,7 @@ export default function PreviewPage() {
               </p>
               <Button asChild className="bg-green-600 hover:bg-green-700">
                 <a
-                  href="https://t.me/taxtally_bot"
+                  href="https://t.me/TaxTallyBot"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -223,7 +223,7 @@ export default function PreviewPage() {
                         className="bg-green-600 hover:bg-green-700"
                       >
                         <a
-                          href="https://t.me/taxtally_bot"
+                          href="https://t.me/TaxTallyBot"
                           target="_blank"
                           rel="noopener noreferrer"
                         >

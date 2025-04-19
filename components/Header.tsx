@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Menu, X, FileText } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Menu, X, FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,17 +15,17 @@ export function Header() {
       setIsScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? 'bg-white dark:bg-gray-900 shadow-md py-2'
-          : 'bg-transparent py-4'
+          ? "bg-white dark:bg-gray-900 shadow-md py-2"
+          : "bg-transparent py-4"
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -64,7 +64,7 @@ export function Header() {
           </Link>
           <Button variant="default" className="bg-green-600 hover:bg-green-700">
             <Link
-              href="https://t.me/taxtally_bot"
+              href="https://t.me/TaxTallyBot"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -123,7 +123,7 @@ export function Header() {
               className="bg-green-600 hover:bg-green-700 w-full"
             >
               <Link
-                href="https://t.me/taxtally_bot"
+                href="https://t.me/TaxTallyBot"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -138,7 +138,7 @@ export function Header() {
                 href="#"
                 onClick={(e) => {
                   e.preventDefault();
-                  alert('WhatsApp bot coming soon!');
+                  alert("WhatsApp bot coming soon!");
                   setIsMenuOpen(false);
                 }}
               >

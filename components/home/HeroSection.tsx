@@ -48,7 +48,7 @@ export function HeroSection() {
           >
             <CTAButton
               text="Try on Telegram"
-              href="https://t.me/taxtally_bot"
+              href="https://t.me/TaxTallyBot"
               external
               icon={<MessageCircle className="h-5 w-5" />}
               className="px-6 py-3 text-base rounded-full"

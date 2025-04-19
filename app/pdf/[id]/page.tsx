@@ -186,7 +186,7 @@ export default function PdfPage() {
               </p>
               <Button asChild className="bg-green-600 hover:bg-green-700">
                 <a
-                  href="https://t.me/taxtally_bot"
+                  href="https://t.me/TaxTallyBot"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -244,7 +244,7 @@ export default function PdfPage() {
                         className="bg-green-600 hover:bg-green-700"
                       >
                         <a
-                          href="https://t.me/taxtally_bot"
+                          href="https://t.me/TaxTallyBot"
                           target="_blank"
                           rel="noopener noreferrer"
                         >

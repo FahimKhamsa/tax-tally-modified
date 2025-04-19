@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import {
   MessageSquare,
   FileText,
@@ -8,45 +8,45 @@ import {
   Mail,
   Download,
   ShieldCheck,
-} from 'lucide-react';
-import { Feature } from '@/types';
+} from "lucide-react";
+import { Feature } from "@/types";
 
 const features: Feature[] = [
   {
-    title: 'Chat-Based Form Generation',
+    title: "Chat-Based Form Generation",
     description:
-      'Answer simple questions via our Telegram bot and our AI will generate your tax forms in minutes.',
-    icon: 'MessageSquare',
+      "Answer simple questions via our Telegram bot and our AI will generate your tax forms in minutes.",
+    icon: "MessageSquare",
   },
   {
-    title: 'Form Preview',
+    title: "Form Preview",
     description:
-      'Preview your generated forms with a watermark before purchasing to ensure accuracy.',
-    icon: 'FileText',
+      "Preview your generated forms with a watermark before purchasing to ensure accuracy.",
+    icon: "FileText",
   },
   {
-    title: 'Secure Payment',
+    title: "Secure Payment",
     description:
-      'Pay a small fee ($2.99) to access the complete, watermark-free version of your form.',
-    icon: 'CreditCard',
+      "Pay a small fee ($2.99) to access the complete, watermark-free version of your form.",
+    icon: "CreditCard",
   },
   {
-    title: 'Email Delivery',
+    title: "Email Delivery",
     description:
-      'Get your completed form delivered directly to your email for easy access.',
-    icon: 'Mail',
+      "Get your completed form delivered directly to your email for easy access.",
+    icon: "Mail",
   },
   {
-    title: 'Instant Downloads',
+    title: "Instant Downloads",
     description:
-      'Download your completed tax forms instantly after payment for immediate use.',
-    icon: 'Download',
+      "Download your completed tax forms instantly after payment for immediate use.",
+    icon: "Download",
   },
   {
-    title: 'Data Security',
+    title: "Data Security",
     description:
-      'Your data is encrypted and securely stored, with forms automatically deleted after 30 days.',
-    icon: 'ShieldCheck',
+      "Your data is encrypted and securely stored, with forms automatically deleted after 30 days.",
+    icon: "ShieldCheck",
   },
 ];
 
@@ -90,8 +90,8 @@ export function FeaturesSection() {
             How TaxTally Works
           </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300">
-            Our streamlined process makes tax form generation simple, secure, and
-            stress-free.
+            Our streamlined process makes tax form generation simple, secure,
+            and stress-free.
           </p>
         </motion.div>
 
@@ -103,10 +103,9 @@ export function FeaturesSection() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {features.map((feature, index) => {
-            const IconComponent =
-              iconComponents[
-                feature.icon as keyof typeof iconComponents
-              ] as React.ElementType;
+            const IconComponent = iconComponents[
+              feature.icon as keyof typeof iconComponents
+            ] as React.ElementType;
 
             return (
               <motion.div
@@ -150,7 +149,7 @@ export function FeaturesSection() {
                 ready in minutes.
               </p>
               <a
-                href="https://t.me/taxtally_bot"
+                href="https://t.me/TaxTallyBot"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-lg transition-colors duration-200"

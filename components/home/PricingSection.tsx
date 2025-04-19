@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { CheckCircle, XCircle } from 'lucide-react';
-import { CTAButton } from '@/components/CTAButton';
-import { PricingTier } from '@/types';
+import { motion } from "framer-motion";
+import { CheckCircle, XCircle } from "lucide-react";
+import { CTAButton } from "@/components/CTAButton";
+import { PricingTier } from "@/types";
 
 const pricingTiers: PricingTier[] = [
   {
-    name: 'Per Form',
+    name: "Per Form",
     price: 2.99,
-    description: 'Perfect for occasional tax form needs',
+    description: "Perfect for occasional tax form needs",
     features: [
-      { feature: 'Single tax form generation', included: true },
-      { feature: 'PDF preview with watermark', included: true },
-      { feature: 'Final PDF without watermark', included: true },
-      { feature: 'Email delivery', included: true },
-      { feature: '30-day access to your form', included: true },
-      { feature: 'Bulk discounts', included: false },
-      { feature: 'Priority support', included: false },
+      { feature: "Single tax form generation", included: true },
+      { feature: "PDF preview with watermark", included: true },
+      { feature: "Final PDF without watermark", included: true },
+      { feature: "Email delivery", included: true },
+      { feature: "30-day access to your form", included: true },
+      { feature: "Bulk discounts", included: false },
+      { feature: "Priority support", included: false },
     ],
     popular: true,
   },
@@ -56,8 +56,8 @@ export function PricingSection() {
                 key={index}
                 className={`bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden ${
                   tier.popular
-                    ? 'border-2 border-green-500 relative'
-                    : 'border border-gray-200 dark:border-gray-700'
+                    ? "border-2 border-green-500 relative"
+                    : "border border-gray-200 dark:border-gray-700"
                 }`}
               >
                 {tier.popular && (
@@ -85,10 +85,7 @@ export function PricingSection() {
 
                   <ul className="space-y-4 mb-8">
                     {tier.features.map((feature, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start"
-                      >
+                      <li key={i} className="flex items-start">
                         {feature.included ? (
                           <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
                         ) : (
@@ -97,8 +94,8 @@ export function PricingSection() {
                         <span
                           className={`${
                             feature.included
-                              ? 'text-gray-700 dark:text-gray-300'
-                              : 'text-gray-500 dark:text-gray-500'
+                              ? "text-gray-700 dark:text-gray-300"
+                              : "text-gray-500 dark:text-gray-500"
                           }`}
                         >
                           {feature.feature}
@@ -109,11 +106,11 @@ export function PricingSection() {
 
                   <CTAButton
                     text="Get Started"
-                    href="https://t.me/taxtally_bot"
+                    href="https://t.me/TaxTallyBot"
                     className={`w-full py-3 ${
                       tier.popular
-                        ? 'bg-green-600 hover:bg-green-700'
-                        : 'bg-gray-800 hover:bg-gray-900'
+                        ? "bg-green-600 hover:bg-green-700"
+                        : "bg-gray-800 hover:bg-gray-900"
                     }`}
                     external
                   />
@@ -130,13 +127,13 @@ export function PricingSection() {
             className="mt-12 text-center"
           >
             <p className="text-gray-700 dark:text-gray-300 mb-6">
-              Need multiple forms or have special requirements?{' '}
+              Need multiple forms or have special requirements?{" "}
               <a
                 href="/contact"
                 className="text-green-600 dark:text-green-400 font-medium hover:underline"
               >
                 Contact us
-              </a>{' '}
+              </a>{" "}
               for custom pricing.
             </p>
 

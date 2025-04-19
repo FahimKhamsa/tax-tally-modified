@@ -1,40 +1,40 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { ArrowLeft, Check, X } from 'lucide-react';
-import { PricingTier } from '@/types';
-import { Button } from '@/components/ui/button';
+import Link from "next/link";
+import { ArrowLeft, Check, X } from "lucide-react";
+import { PricingTier } from "@/types";
+import { Button } from "@/components/ui/button";
 
 const pricingTiers: PricingTier[] = [
   {
-    name: 'Per Form',
+    name: "Per Form",
     price: 2.99,
-    description: 'Perfect for occasional tax form needs',
+    description: "Perfect for occasional tax form needs",
     features: [
-      { feature: 'Single tax form generation', included: true },
-      { feature: 'PDF preview with watermark', included: true },
-      { feature: 'Final PDF without watermark', included: true },
-      { feature: 'Email delivery', included: true },
-      { feature: 'Downloadable PDF', included: true },
-      { feature: '30-day access to your form', included: true },
-      { feature: 'Bulk discounts', included: false },
-      { feature: 'Priority support', included: false },
+      { feature: "Single tax form generation", included: true },
+      { feature: "PDF preview with watermark", included: true },
+      { feature: "Final PDF without watermark", included: true },
+      { feature: "Email delivery", included: true },
+      { feature: "Downloadable PDF", included: true },
+      { feature: "30-day access to your form", included: true },
+      { feature: "Bulk discounts", included: false },
+      { feature: "Priority support", included: false },
     ],
     popular: true,
   },
   {
-    name: 'Business',
+    name: "Business",
     price: 19.99,
-    description: 'Ideal for businesses needing multiple forms',
+    description: "Ideal for businesses needing multiple forms",
     features: [
-      { feature: '10 tax forms per month', included: true },
-      { feature: 'PDF preview with watermark', included: true },
-      { feature: 'Final PDF without watermark', included: true },
-      { feature: 'Email delivery', included: true },
-      { feature: 'Downloadable PDF', included: true },
-      { feature: '60-day access to your forms', included: true },
-      { feature: 'Bulk discounts', included: true },
-      { feature: 'Priority support', included: true },
+      { feature: "10 tax forms per month", included: true },
+      { feature: "PDF preview with watermark", included: true },
+      { feature: "Final PDF without watermark", included: true },
+      { feature: "Email delivery", included: true },
+      { feature: "Downloadable PDF", included: true },
+      { feature: "60-day access to your forms", included: true },
+      { feature: "Bulk discounts", included: true },
+      { feature: "Priority support", included: true },
     ],
     popular: false,
   },
@@ -42,24 +42,24 @@ const pricingTiers: PricingTier[] = [
 
 const faq = [
   {
-    question: 'How much does each tax form cost?',
+    question: "How much does each tax form cost?",
     answer:
-      'Each individual tax form costs $2.99. This is a one-time payment per form, with no subscriptions or hidden fees.',
+      "Each individual tax form costs $2.99. This is a one-time payment per form, with no subscriptions or hidden fees.",
   },
   {
-    question: 'What payment methods do you accept?',
+    question: "What payment methods do you accept?",
     answer:
-      'We accept all major credit and debit cards through our secure Stripe payment processing system.',
+      "We accept all major credit and debit cards through our secure Stripe payment processing system.",
   },
   {
-    question: 'Can I get a refund if I\'m not satisfied?',
+    question: "Can I get a refund if I'm not satisfied?",
     answer:
-      'If there are issues with the form generation or quality, please contact our support team. We handle refund requests on a case-by-case basis.',
+      "If there are issues with the form generation or quality, please contact our support team. We handle refund requests on a case-by-case basis.",
   },
   {
-    question: 'Do you offer discounts for multiple forms?',
+    question: "Do you offer discounts for multiple forms?",
     answer:
-      'Yes, our Business tier offers a significant discount for users who need multiple forms regularly. We also offer custom pricing for enterprise users with higher volume needs.',
+      "Yes, our Business tier offers a significant discount for users who need multiple forms regularly. We also offer custom pricing for enterprise users with higher volume needs.",
   },
 ];
 
@@ -91,8 +91,8 @@ export default function PricingPage() {
                 key={index}
                 className={`bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden border-2 ${
                   tier.popular
-                    ? 'border-green-500 relative'
-                    : 'border-gray-200 dark:border-gray-700'
+                    ? "border-green-500 relative"
+                    : "border-gray-200 dark:border-gray-700"
                 }`}
               >
                 {tier.popular && (
@@ -113,7 +113,7 @@ export default function PricingPage() {
                     <span className="text-5xl font-extrabold text-gray-900 dark:text-white">
                       ${tier.price.toFixed(2)}
                     </span>
-                    {tier.name === 'Per Form' ? (
+                    {tier.name === "Per Form" ? (
                       <span className="text-gray-600 dark:text-gray-400 ml-2">
                         per form
                       </span>
@@ -135,8 +135,8 @@ export default function PricingPage() {
                         <span
                           className={`${
                             feature.included
-                              ? 'text-gray-700 dark:text-gray-300'
-                              : 'text-gray-500 dark:text-gray-500'
+                              ? "text-gray-700 dark:text-gray-300"
+                              : "text-gray-500 dark:text-gray-500"
                           }`}
                         >
                           {feature.feature}
@@ -148,16 +148,24 @@ export default function PricingPage() {
                   <Button
                     className={`w-full py-3 ${
                       tier.popular
-                        ? 'bg-green-600 hover:bg-green-700'
-                        : 'bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600'
+                        ? "bg-green-600 hover:bg-green-700"
+                        : "bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600"
                     }`}
                   >
                     <Link
-                      href={tier.name === 'Per Form' ? 'https://t.me/taxtally_bot' : '/contact'}
-                      target={tier.name === 'Per Form' ? '_blank' : undefined}
-                      rel={tier.name === 'Per Form' ? 'noopener noreferrer' : undefined}
+                      href={
+                        tier.name === "Per Form"
+                          ? "https://t.me/TaxTallyBot"
+                          : "/contact"
+                      }
+                      target={tier.name === "Per Form" ? "_blank" : undefined}
+                      rel={
+                        tier.name === "Per Form"
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                     >
-                      {tier.name === 'Per Form' ? 'Get Started' : 'Contact Us'}
+                      {tier.name === "Per Form" ? "Get Started" : "Contact Us"}
                     </Link>
                   </Button>
                 </div>

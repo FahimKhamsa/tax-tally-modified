@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { MailIcon, MessageSquare, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { ContactFormData } from '@/types';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { MailIcon, MessageSquare, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { ContactFormData } from "@/types";
 
 export function ContactSection() {
   const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -38,14 +38,14 @@ export function ContactSection() {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify(formData),
       // });
-      
+
       // For demo, we'll simulate a successful submission
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      
+
       setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: "", email: "", message: "" });
     } catch (err) {
-      setError('Something went wrong. Please try again.');
+      setError("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -253,7 +253,7 @@ export function ContactSection() {
                         Start a conversation with our Telegram bot:
                       </p>
                       <a
-                        href="https://t.me/taxtally_bot"
+                        href="https://t.me/TaxTallyBot"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors"
@@ -270,8 +270,8 @@ export function ContactSection() {
                     We're Here to Help
                   </h4>
                   <p className="mb-4 opacity-90">
-                    Have questions about our service or need assistance with your
-                    tax forms? Our team is ready to help you navigate the
+                    Have questions about our service or need assistance with
+                    your tax forms? Our team is ready to help you navigate the
                     process and answer any questions you might have.
                   </p>
                   <p className="text-sm opacity-80">

@@ -5,25 +5,33 @@ import Image from "next/image";
 import { ArrowRight, MessageCircle, CheckCircle } from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
 import { Telegram, WhatsApp } from "@/components/icons/SvgIcons";
+import { TypingText } from "../TypingText";
+import { useEffect, useState } from "react";
 
 export function HeroSection() {
+  const [size, setSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    setSize({ width: window.innerWidth, height: window.innerHeight });
+    window.addEventListener("resize", () =>
+      setSize({ width: window.innerWidth, height: window.innerHeight })
+    );
+    return () => window.removeEventListener("resize", () => {});
+  }, []);
   return (
     <section
       className="relative min-h-[675px] scroll-pt-24 pb-20 md:pt-28 md:pb-24 
-               bg-gradient-to-br from-green-50 to-white 
+               bg-gradient-to-b from-green-50/90 to-white/90
                dark:from-gray-900 dark:to-gray-800 overflow-hidden"
     >
-      {/* Background image layer */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/home-bg-image.png"
-          alt="Background"
-          width={window.screen.width}
-          height={window.screen.height}
-          className="absolute top-0 left-0 object-cover transform -translate-y-[350px]"
-          priority
-        />
-      </div>
+      <Image
+        src="/images/home-bg-image.png"
+        alt="Background"
+        width={size.width}
+        height={size.width}
+        className="absolute top-0 left-0 object-cover transform -translate-y-[350px]"
+        priority
+      />
 
       {/* Overlay to darken/lighten over background image */}
       <div className="absolute inset-0 bg-white/25 dark:bg-gray-900/60"></div>
@@ -47,10 +55,14 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-gray-900 dark:text-white"
+            className="flex flex-col text-4xl md:text-5xl lg:text-6xl 
+                   font-extrabold tracking-tight mb-6 
+                   text-gray-900 dark:text-white"
           >
-            Tax Forms Made{" "}
-            <span className="text-green-600 dark:text-green-500">Simple</span>
+            <span>Tax Forms Made</span>
+            <TypingText
+              words={["Simple", "Accurate", "Secure", "Fast", "Affordable"]}
+            />
           </motion.h1>
 
           <motion.p

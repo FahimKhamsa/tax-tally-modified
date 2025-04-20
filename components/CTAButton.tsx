@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 // Motion-enabled Button for hover/tap animations
-const MotionButton = motion(Button);
+const MotionButton = motion.create(Button);
 
 interface CTAButtonProps {
   text: string;

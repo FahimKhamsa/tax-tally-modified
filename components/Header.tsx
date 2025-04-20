@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Menu, X, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTAButton } from "@/components/CTAButton";
@@ -42,7 +41,7 @@ export function Header() {
           <Link href="/" className={navigationClassName}>
             Home
           </Link>
-          <Link href="#features" className={navigationClassName}>
+          <Link href="/#features" className={navigationClassName}>
             Features
           </Link>
           <Link href="/pricing" className={navigationClassName}>
@@ -81,28 +80,35 @@ export function Header() {
           <nav className="container mx-auto px-4 flex flex-col space-y-6 py-8">
             <Link
               href="/"
-              className="text-xl text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              className={cn("text-xl", navigationClassName)}
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
             <Link
+              href="/#features"
+              className={cn("text-xl", navigationClassName)}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Features
+            </Link>
+            <Link
               href="/pricing"
-              className="text-xl text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              className={cn("text-xl", navigationClassName)}
               onClick={() => setIsMenuOpen(false)}
             >
               Pricing
             </Link>
             <Link
               href="/faqs"
-              className="text-xl text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              className={cn("text-xl", navigationClassName)}
               onClick={() => setIsMenuOpen(false)}
             >
               FAQs
             </Link>
             <Link
               href="/contact"
-              className="text-xl text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              className={cn("text-xl", navigationClassName)}
               onClick={() => setIsMenuOpen(false)}
             >
               Contact

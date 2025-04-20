@@ -8,8 +8,20 @@ import { Telegram, WhatsApp } from "@/components/icons/SvgIcons";
 import { TypingText } from "../TypingText";
 import { useEffect, useState } from "react";
 
+function useIsLarge(breakpoint = 1024) {
+  const [isLarge, setIsLarge] = useState(false);
+  useEffect(() => {
+    const update = () => setIsLarge(window.innerWidth >= breakpoint);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [breakpoint]);
+  return isLarge;
+}
+
 export function HeroSection() {
   const [size, setSize] = useState({ width: 0, height: 0 });
+  const isLarge = useIsLarge();
 
   useEffect(() => {
     setSize({ width: window.innerWidth, height: window.innerHeight });
@@ -18,6 +30,7 @@ export function HeroSection() {
     );
     return () => window.removeEventListener("resize", () => {});
   }, []);
+
   return (
     <section
       id="hero"
@@ -28,10 +41,11 @@ export function HeroSection() {
       <Image
         src="/images/home-bg-image.png"
         alt="Background"
-        width={size.width}
-        height={size.width}
-        className="absolute top-0 left-0 object-cover transform -translate-y-[350px]"
         priority
+        className="absolute top-0 left-0 object-cover transform lg:-translate-y-[350px]"
+        {...(isLarge
+          ? { width: size.width, height: size.height }
+          : { fill: true })}
       />
 
       {/* Overlay to darken/lighten over background image */}

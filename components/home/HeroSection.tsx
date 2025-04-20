@@ -20,9 +20,10 @@ export function HeroSection() {
   }, []);
   return (
     <section
+      id="hero"
       className="relative min-h-[675px] scroll-pt-24 pb-20 md:pt-28 md:pb-24 
                bg-gradient-to-b from-green-50/90 to-white/90
-               dark:from-gray-900 dark:to-gray-800 overflow-hidden"
+               dark:from-gray-900 dark:to-gray-800 overflow-visible"
     >
       <Image
         src="/images/home-bg-image.png"
@@ -34,16 +35,16 @@ export function HeroSection() {
       />
 
       {/* Overlay to darken/lighten over background image */}
-      <div className="absolute inset-0 bg-white/25 dark:bg-gray-900/60"></div>
+      {/* <div className="absolute inset-0 bg-white/25 dark:bg-gray-900/60"></div> */}
 
       <div
         className="
           absolute inset-x-0 bottom-0
-          h-36 pointer-events-none
+          h-40 pointer-events-none
           bg-gradient-to-b
           from-transparent
-            via-white/80
-            to-white
+          via-white/50
+          to-white
           dark:via-gray-900/80
           dark:to-gray-900
         "
@@ -60,9 +61,7 @@ export function HeroSection() {
                    text-gray-900 dark:text-white"
           >
             <span>Tax Forms Made</span>
-            <TypingText
-              words={["Simple", "Accurate", "Secure", "Fast", "Affordable"]}
-            />
+            <TypingText words={["$imple", "Accurate", "$ecure", "Fast"]} />
           </motion.h1>
 
           <motion.p

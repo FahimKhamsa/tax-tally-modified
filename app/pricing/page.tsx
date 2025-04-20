@@ -21,6 +21,7 @@ const pricingTiers: PricingTier[] = [
       { feature: "Priority support", included: false },
     ],
     popular: true,
+    available: true,
   },
   {
     name: "Business",
@@ -37,6 +38,7 @@ const pricingTiers: PricingTier[] = [
       { feature: "Priority support", included: true },
     ],
     popular: false,
+    available: false,
   },
 ];
 
@@ -68,6 +70,7 @@ export default function PricingPage() {
     <div className="pt-24 pb-20">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
+          {/* Header */}
           <div className="mb-12 text-center">
             <Link
               href="/"
@@ -85,6 +88,7 @@ export default function PricingPage() {
             </p>
           </div>
 
+          {/* Pricing Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {pricingTiers.map((tier, index) => (
               <div
@@ -93,7 +97,7 @@ export default function PricingPage() {
                   tier.popular
                     ? "border-green-500 relative"
                     : "border-gray-200 dark:border-gray-700"
-                }`}
+                } ${!tier.available ? "opacity-50 pointer-events-none" : ""}`}
               >
                 {tier.popular && (
                   <div className="absolute top-0 right-0 bg-green-500 text-white px-4 py-1 text-sm font-medium">
@@ -113,15 +117,9 @@ export default function PricingPage() {
                     <span className="text-5xl font-extrabold text-gray-900 dark:text-white">
                       ${tier.price.toFixed(2)}
                     </span>
-                    {tier.name === "Per Form" ? (
-                      <span className="text-gray-600 dark:text-gray-400 ml-2">
-                        per form
-                      </span>
-                    ) : (
-                      <span className="text-gray-600 dark:text-gray-400 ml-2">
-                        per month
-                      </span>
-                    )}
+                    <span className="text-gray-600 dark:text-gray-400 ml-2">
+                      {tier.name === "Per Form" ? "per form" : "per month"}
+                    </span>
                   </div>
 
                   <ul className="space-y-4 mb-8">
@@ -145,34 +143,47 @@ export default function PricingPage() {
                     ))}
                   </ul>
 
-                  <Button
-                    className={`w-full py-3 ${
-                      tier.popular
-                        ? "bg-green-600 hover:bg-green-700"
-                        : "bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600"
-                    }`}
-                  >
-                    <Link
-                      href={
-                        tier.name === "Per Form"
-                          ? "https://t.me/TaxTallyBot"
-                          : "/contact"
-                      }
-                      target={tier.name === "Per Form" ? "_blank" : undefined}
-                      rel={
-                        tier.name === "Per Form"
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
+                  {/* Action Button */}
+                  {!tier.available ? (
+                    <Button
+                      disabled
+                      className="w-full py-3 bg-gray-400 cursor-not-allowed"
                     >
-                      {tier.name === "Per Form" ? "Get Started" : "Contact Us"}
-                    </Link>
-                  </Button>
+                      Coming Soon
+                    </Button>
+                  ) : (
+                    <Button
+                      className={`w-full py-3 ${
+                        tier.popular
+                          ? "bg-green-600 hover:bg-green-700"
+                          : "bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600"
+                      }`}
+                    >
+                      <Link
+                        href={
+                          tier.name === "Per Form"
+                            ? "https://t.me/TaxTallyBot"
+                            : "/contact"
+                        }
+                        target={tier.name === "Per Form" ? "_blank" : undefined}
+                        rel={
+                          tier.name === "Per Form"
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                      >
+                        {tier.name === "Per Form"
+                          ? "Get Started with Telegram"
+                          : "Contact Us"}
+                      </Link>
+                    </Button>
+                  )}
                 </div>
               </div>
             ))}
           </div>
 
+          {/* FAQ Section */}
           <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 mb-16">
             <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">
               Frequently Asked Questions
@@ -194,6 +205,7 @@ export default function PricingPage() {
             </div>
           </div>
 
+          {/* Custom Solution */}
           <div className="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-md text-center">
             <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
               Need a Custom Solution?

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 interface LogoProps {
@@ -13,13 +14,13 @@ export const Logo: React.FC<LogoProps> = ({
   showText = true,
   size = 32,
 }) => (
-  <div className={`flex items-center ${className}`}>
+  <Link href="/" className={`flex items-center ${className}`}>
     <Image
       src="/images/logo.png"
       alt={altText}
       width={size}
       height={size}
-      className="mr-2"
+      className="mr-1"
     />
     {showText && (
       <span
@@ -30,5 +31,5 @@ export const Logo: React.FC<LogoProps> = ({
         Tally
       </span>
     )}
-  </div>
+  </Link>
 );

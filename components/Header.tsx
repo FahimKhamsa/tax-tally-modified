@@ -7,10 +7,14 @@ import { Menu, X, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTAButton } from "@/components/CTAButton";
 import { cn } from "@/lib/utils";
+import { Logo } from "./Logo";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const navigationClassName =
+    "text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,49 +35,23 @@ export function Header() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <Image
-            src="/images/logo.png"
-            alt="TaxTally logo"
-            width={32}
-            height={32}
-            className="h-8 w-8 object-contain"
-          />
-          <span className="text-xl font-bold text-gray-900 dark:text-white">
-            TaxTally
-          </span>
-        </Link>
+        <Logo className="space-x-2" />
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <Link
-            href="/"
-            className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-          >
+          <Link href="/" className={navigationClassName}>
             Home
           </Link>
-          <Link
-            href="#features"
-            className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-          >
+          <Link href="#features" className={navigationClassName}>
             Features
           </Link>
-          <Link
-            href="/pricing"
-            className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-          >
+          <Link href="/pricing" className={navigationClassName}>
             Pricing
           </Link>
-          <Link
-            href="/faqs"
-            className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-          >
+          <Link href="/faqs" className={navigationClassName}>
             FAQs
           </Link>
-          <Link
-            href="/contact"
-            className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-          >
+          <Link href="/contact" className={navigationClassName}>
             Contact
           </Link>
           <CTAButton

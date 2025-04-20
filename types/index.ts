@@ -44,4 +44,5 @@ export interface PricingTier {
   description: string;
   features: PricingFeature[];
   popular?: boolean;
+  available?: boolean;
 }

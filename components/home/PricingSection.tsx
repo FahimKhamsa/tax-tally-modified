@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle, XCircle } from "lucide-react";
-import { CTAButton } from "@/components/CTAButton";
 import { PricingTier } from "@/types";
 
 const pricingTiers: PricingTier[] = [
@@ -51,72 +50,91 @@ export function PricingSection() {
             transition={{ duration: 0.6 }}
             className="grid grid-cols-1 gap-8"
           >
-            {pricingTiers.map((tier, index) => (
-              <div
-                key={index}
-                className={`bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden ${
-                  tier.popular
-                    ? "border-2 border-green-500 relative"
-                    : "border border-gray-200 dark:border-gray-700"
-                }`}
-              >
-                {tier.popular && (
-                  <div className="absolute top-0 right-0 bg-green-500 text-white px-4 py-1 rounded-bl-lg text-sm font-medium">
-                    Most Popular
+            {pricingTiers.map((tier, index) => {
+              const splitIndex = Math.ceil(tier.features.length / 2);
+              const firstHalf = tier.features.slice(0, splitIndex);
+              const secondHalf = tier.features.slice(splitIndex);
+
+              return (
+                <div
+                  key={index}
+                  className={`bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden ${
+                    tier.popular
+                      ? "border-2 border-green-500 relative"
+                      : "border border-gray-200 dark:border-gray-700"
+                  }`}
+                >
+                  {tier.popular && (
+                    <div className="absolute top-0 right-0 bg-green-500 text-white px-4 py-1 rounded-bl-lg text-sm font-medium">
+                      Most Popular
+                    </div>
+                  )}
+
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                      {tier.name}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 mb-6">
+                      {tier.description}
+                    </p>
+
+                    <div className="flex items-baseline mb-8">
+                      <span className="text-5xl font-extrabold text-gray-900 dark:text-white">
+                        ${tier.price.toFixed(2)}
+                      </span>
+                      <span className="text-gray-600 dark:text-gray-400 ml-2">
+                        per form
+                      </span>
+                    </div>
+
+                    <div className="flex space-x-8 mb-8">
+                      <ul className="space-y-4 flex-1">
+                        {firstHalf.map((feature, i) => (
+                          <li key={i} className="flex items-start">
+                            {feature.included ? (
+                              <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                            ) : (
+                              <XCircle className="h-5 w-5 text-gray-400 mt-0.5 mr-3 flex-shrink-0" />
+                            )}
+                            <span
+                              className={`${
+                                feature.included
+                                  ? "text-gray-700 dark:text-gray-300"
+                                  : "text-gray-500 dark:text-gray-500"
+                              }`}
+                            >
+                              {feature.feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      <ul className="space-y-4 flex-1">
+                        {secondHalf.map((feature, i) => (
+                          <li key={i} className="flex items-start">
+                            {feature.included ? (
+                              <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                            ) : (
+                              <XCircle className="h-5 w-5 text-gray-400 mt-0.5 mr-3 flex-shrink-0" />
+                            )}
+                            <span
+                              className={`${
+                                feature.included
+                                  ? "text-gray-700 dark:text-gray-300"
+                                  : "text-gray-500 dark:text-gray-500"
+                              }`}
+                            >
+                              {feature.feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* CTAButton removed as per request */}
                   </div>
-                )}
-
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                    {tier.name}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6">
-                    {tier.description}
-                  </p>
-
-                  <div className="flex items-baseline mb-8">
-                    <span className="text-5xl font-extrabold text-gray-900 dark:text-white">
-                      ${tier.price.toFixed(2)}
-                    </span>
-                    <span className="text-gray-600 dark:text-gray-400 ml-2">
-                      per form
-                    </span>
-                  </div>
-
-                  <ul className="space-y-4 mb-8">
-                    {tier.features.map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        {feature.included ? (
-                          <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                        ) : (
-                          <XCircle className="h-5 w-5 text-gray-400 mt-0.5 mr-3 flex-shrink-0" />
-                        )}
-                        <span
-                          className={`${
-                            feature.included
-                              ? "text-gray-700 dark:text-gray-300"
-                              : "text-gray-500 dark:text-gray-500"
-                          }`}
-                        >
-                          {feature.feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <CTAButton
-                    text="Get Started"
-                    href="https://t.me/TaxTallyBot"
-                    className={`w-full py-3 ${
-                      tier.popular
-                        ? "bg-green-600 hover:bg-green-700"
-                        : "bg-gray-800 hover:bg-gray-900"
-                    }`}
-                    external
-                  />
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </motion.div>
 
           <motion.div
